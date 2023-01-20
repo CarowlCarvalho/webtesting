@@ -2,9 +2,8 @@
 Resource     ../main.robot
 
 *** Keywords ***
-Acessar o site e preencher o formulário
+Acessar o site
     Dado que eu acesse o Organo
-    E preencha os campos do formulário
-    E clique no botão "Criar Card"
+    
 
 
