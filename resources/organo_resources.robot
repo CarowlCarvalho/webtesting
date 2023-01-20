@@ -26,6 +26,7 @@ Abrir o navegador e acessar a página do site Organo
 Preencher os campos do formulário
      Input Text        ${CAMPO_NOME}     Akemi
      Sleep        1s
+     
      Input Text        ${CAMPO_CARGO}    Scuba Team
      Sleep        1s
      Input Text        ${CAMPO_IMAGEM}   https://picsum.photos/200/300
