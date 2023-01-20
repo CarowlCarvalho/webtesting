@@ -1,39 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230113 13:38:29.589" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.1 on win32)" generated="20230119 16:02:12.578" rpa="false" schemaversion="3">
 <suite id="s1" name="Organo Tests" source="C:\Users\Caroline\Desktop\curso-robot\organo\webtesting\organo_tests.robot">
-<test id="s1-t1" name="Caso de Teste 01 - Acesso ao formulário" line="9">
-<kw name="Abrir o navegador" library="organo_resources" type="SETUP">
+<test id="s1-t1" name="Caso de Teste 01 - Preencher formulário" line="9">
+<kw name="Abrir o navegador e acessar a página do site Organo" library="organo_resources">
 <kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
 <arg>browser=chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230113 13:38:29.772" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
-<status status="PASS" starttime="20230113 13:38:29.772" endtime="20230113 13:38:31.544"/>
+<msg timestamp="20230119 16:02:12.833" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/'.</msg>
+<status status="PASS" starttime="20230119 16:02:12.832" endtime="20230119 16:02:15.656"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230113 13:38:31.544" endtime="20230113 13:38:31.668"/>
+<status status="PASS" starttime="20230119 16:02:12.832" endtime="20230119 16:02:15.657"/>
 </kw>
-<status status="PASS" starttime="20230113 13:38:29.772" endtime="20230113 13:38:31.668"/>
+<kw name="Preencher os campos do formulário" library="organo_resources">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${CAMPO_NOME}</arg>
+<arg>Akemi</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:15.659" level="INFO">Typing text 'Akemi' into text field 'id:form-nome'.</msg>
+<status status="PASS" starttime="20230119 16:02:15.658" endtime="20230119 16:02:15.805"/>
 </kw>
-<kw name="Acessar a página do site Organo" library="organo_resources">
-<kw name="Go To" library="SeleniumLibrary">
-<arg>url=${URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20230113 13:38:31.670" level="INFO">Opening url 'https://organo-dun.vercel.app/'</msg>
-<status status="PASS" starttime="20230113 13:38:31.669" endtime="20230113 13:38:32.002"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230119 16:02:16.806" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230119 16:02:15.805" endtime="20230119 16:02:16.806"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>locator=${FORM}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230113 13:38:32.002" endtime="20230113 13:38:32.046"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${CAMPO_CARGO}</arg>
+<arg>Scuba Team</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:16.806" level="INFO">Typing text 'Scuba Team' into text field 'id:form-cargo'.</msg>
+<status status="PASS" starttime="20230119 16:02:16.806" endtime="20230119 16:02:16.969"/>
 </kw>
-<status status="PASS" starttime="20230113 13:38:31.669" endtime="20230113 13:38:32.047"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230119 16:02:17.970" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230119 16:02:16.969" endtime="20230119 16:02:17.970"/>
 </kw>
-<doc>Esse teste verifica</doc>
-<status status="PASS" starttime="20230113 13:38:29.772" endtime="20230113 13:38:32.047"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${CAMPO_IMAGEM}</arg>
+<arg>https://picsum.photos/200/300</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:17.971" level="INFO">Typing text 'https://picsum.photos/200/300' into text field 'id:form-imagem'.</msg>
+<status status="PASS" starttime="20230119 16:02:17.971" endtime="20230119 16:02:18.198"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CAMPO_TIME}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:18.200" level="INFO">Clicking element 'class:lista-suspensa'.</msg>
+<status status="PASS" starttime="20230119 16:02:18.198" endtime="20230119 16:02:18.255"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230119 16:02:19.257" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230119 16:02:18.255" endtime="20230119 16:02:19.257"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${OPCAO_PROGRAMACAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:19.257" level="INFO">Clicking element '//option[contains(.,'Programação')]'.</msg>
+<status status="PASS" starttime="20230119 16:02:19.257" endtime="20230119 16:02:19.296"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230119 16:02:20.298" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230119 16:02:19.296" endtime="20230119 16:02:20.298"/>
+</kw>
+<status status="PASS" starttime="20230119 16:02:15.657" endtime="20230119 16:02:20.298"/>
+</kw>
+<kw name="Clicar em &quot;Criar Card&quot;" library="organo_resources">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${BOTAO_CARD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230119 16:02:20.299" level="INFO">Clicking element 'class:botao'.</msg>
+<status status="PASS" starttime="20230119 16:02:20.299" endtime="20230119 16:02:20.353"/>
+</kw>
+<status status="PASS" starttime="20230119 16:02:20.298" endtime="20230119 16:02:20.353"/>
+</kw>
+<kw name="Identificar o card no time esperado" library="organo_resources">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${CARD_COLABORADOR}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230119 16:02:20.380" level="INFO">Element 'class:colaborador' is displayed.</msg>
+<status status="PASS" starttime="20230119 16:02:20.353" endtime="20230119 16:02:20.380"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230119 16:02:30.380" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20230119 16:02:20.380" endtime="20230119 16:02:30.380"/>
+</kw>
+<status status="PASS" starttime="20230119 16:02:20.353" endtime="20230119 16:02:30.380"/>
+</kw>
+<status status="PASS" starttime="20230119 16:02:12.831" endtime="20230119 16:02:30.380"/>
 </test>
 <doc>Essa suíte testa o site</doc>
-<status status="PASS" starttime="20230113 13:38:29.589" endtime="20230113 13:38:32.050"/>
+<status status="PASS" starttime="20230119 16:02:12.580" endtime="20230119 16:02:30.382"/>
 </suite>
 <statistics>
 <total>
