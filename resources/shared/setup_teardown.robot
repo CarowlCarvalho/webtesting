@@ -6,4 +6,7 @@ Acessar o site
     Dado que eu acesse o Organo
     
 
+Fechar navegador
+    Close Browser
+
 

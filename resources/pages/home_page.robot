@@ -4,19 +4,22 @@ Resource    ../main.robot
 
 *** Variables ***
 &{home}
-...    CAMPO=NOME-id:form-nome
-...    CAMPO=CARGO-id:form-cargo
-...    CAMPO=IMAGEM-id:form-imagem
-...    CAMPO=TIME-class:lista-suspensa
-...    BOTAO=CARD-class:botao
-...    OPCAO=PROGRAMACAO-//option[contains(.,'Programação')]
-...    OPCAO=FRONT-//option[contains(.,'Front-End')]
-...    OPCAO=DADOS-//option[contains(.,'Data Science')]
-...    OPCAO=DEVOPS-//option[contains(.,'Devops')] 
-...    OPCAO=UX-//option[contains(.,'UX e Design')]
-...    OPCAO=MOBILE-//option[contains(.,'Mobile')]
-...    OPCAO=INOVACAO-//option[contains(.,'Inovação e Gestão')]
-...    CARD=COLABORADOR-class:colaborador
+...    CAMPO_NOME=id:form-nome
+...    CAMPO_CARGO=id:form-cargo
+...    CAMPO_IMAGEM=id:form-imagem
+...    CAMPO_TIME=class:lista-suspensa
+...    BOTAO_CARD=id:form-botao 
+...    CARD_COLABORADOR=class:colaborador
+
+@{selecionar_time}
+...    //option[contains(.,'Programação')]
+...    //option[contains(.,'Front-End')]
+...    //option[contains(.,'Data Science')]
+...    //option[contains(.,'Devops')] 
+...    //option[contains(.,'UX e Design')]
+...    //option[contains(.,'Mobile')]
+...    //option[contains(.,'Inovação e Gestão')]
+
 
 
 *** Keywords ***
@@ -27,21 +30,38 @@ Dado que eu acesse o Organo
     
     
 E preencha os campos do formulário
-     Input Text        ${geral.CAMPO_NOME}     Akemi
-     Sleep        1s
-     Input Text        ${home.CAMPO_CARGO}    Scuba Team
-     Sleep        1s
-     Input Text        ${home.CAMPO_IMAGEM}   https://picsum.photos/200/300
+     ${Nome}           FakerLibrary.FirstName    
+     Input Text        ${home.CAMPO_NOME}     ${Nome} 
+     ${Cargo}           FakerLibrary.Job     
+     Input Text        ${home.CAMPO_CARGO}    ${Cargo}
+     ${Imagem}         FakerLibrary.ImageUrl    width=100    height=100  
+     Input Text        ${home.CAMPO_IMAGEM}   ${Imagem} 
 
      Click Element     ${home.CAMPO_TIME}  
-     Sleep        1s   
-     Click Element    ${home.OPCAO_PROGRAMACAO}
-     Sleep        1s 
+     
+     Click Element    ${selecionar_time[0]}
+    #  Sleep        10s 
     
 E clique no botão "Criar Card"
     Click Element    ${home.BOTAO_CARD}
-    # Sleep        10s 
+    #  Sleep        10s 
       
-Identificar o card no time esperado
-    Element Should Be Visible    ${home.CARD_COLABORADOR}
+Então identificar o card no time esperado
+    Element Should Be Visible   ${home.CARD_COLABORADOR}
     Sleep        10s
+
+
+Então sistema deve apresentar mensagem de campo obrigatório
+    [Arguments]    ${nome_do_campo}
+    Element Should Be Visible    ${nome_do_campo}    
+    Sleep     05s
+
+Então identificar 3 cards nos times esperados
+
+    FOR    ${i}    IN RANGE    1    3   
+        
+        E preencha os campos do formulário
+        E clique no botão "Criar Card"
+    END
+    Sleep     10s
+        
